@@ -1,7 +1,7 @@
 <script>
   function change_color(e) {
     var target = e.target;
-    if (target.nodeName == "DIV"){
+    if (target.nodeName == "DIV" && target.className != "rower"){
       target.style.backgroundColor = pick_color(target.style.backgroundColor)
     }
   }
@@ -15,19 +15,29 @@
       (colors.indexOf(current_color)+1) % colors.length
     ]
   }
-  function nothing() {
-    alert ("DO NOT PRESS")
+  function load() {
+    for (var n = 0; n<5; n++){
+    var rower = document.createElement("div")
+    rower.className = "rower"  
+    for (var u = 0; u<5; u++){
+    var pixeler = document.createElement("div")
+  pixeler.append("")
+    rower.append(pixeler)
   }
+   document.body.append(rower)
+   }
+    }
 
   document.documentElement.addEventListener("click",change_color)
+  window.onload = load
 </script>
-<div >click here</div>
 <style>
-  div {
+  .rower div {
     width: 50px;
     height: 50px;
     
   }
-
+.rower{ 
+  display: flex;
+}
 </style>
-<button onclick="nothing()"></button>
