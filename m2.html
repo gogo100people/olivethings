@@ -1,11 +1,4 @@
 <script>
-  function start_increment(num) {
-    return num + 1;
-  }
-  function alert_num(inort) {
-    var oliver =start_increment(inort)
-    alert (oliver)
-  }
   function change_color(e) {
     var target = e.target;
     if (target.nodeName == "DIV"){
@@ -22,12 +15,13 @@
       (colors.indexOf(current_color)+1) % colors.length
     ]
   }
+  function nothing() {
+    alert ("DO NOT PRESS")
+  }
 
   document.documentElement.addEventListener("click",change_color)
 </script>
-<input type="number" id="num">
-<button onclick="alert_num(Number(num.value))">increment</button>
-<div >color!</div>
+<div >click here</div>
 <style>
   div {
     width: 50px;
@@ -36,3 +30,4 @@
   }
 
 </style>
+<button onclick="nothing()"></button>
