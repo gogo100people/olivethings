@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <script>
-  function change_color(e) {
+  function changeColor(e) {
     var target = e.target;
     if (target.nodeName == "DIV" && target.className != "rower"){
-      target.style.backgroundColor = pick_color(target.style.backgroundColor)
+      target.style.backgroundColor = pickColor(target.style.backgroundColor)
     }
   }
-  function pick_color(current_color) {
+  
+  function pickColor(current_color) {
     var colors = [
       "red",
       "orange",
@@ -15,9 +17,31 @@
       (colors.indexOf(current_color)+1) % colors.length
     ]
   }
+
+  function dropSqare(sqare) {
+    
+    var top = parseInt(sqare.style.top)
+    if(top>window.innerHeight) {
+      sqare.remove()
+      return
+    }
+
+    sqare.style.top = (top + 1) + "px"
+    setTimeout(function() {
+      dropSqare(sqare)
+    },1)
+    sqare.className = "sqare"
+  }
+  
   function load() {
+    var sqare = document.createElement("div")
+    sqare.style.top = "0px"
+    sqare.style.left = window.innerWidth/2 + "px"
+    document.body.append(sqare)
+    dropSqare(sqare)
+    
     for (var n = 0; n<5; n++){
-    var rower = document.createElement("div")
+      var rower = document.createElement("div")
     rower.className = "rower"  
     for (var u = 0; u<5; u++){
     var pixeler = document.createElement("div")
@@ -28,16 +52,21 @@
    }
     }
 
-  document.documentElement.addEventListener("click",change_color)
+  document.documentElement.addEventListener("click",changeColor)
   window.onload = load
 </script>
 <style>
   .rower div {
     width: 50px;
     height: 50px;
-    
   }
 .rower{ 
   display: flex;
+}
+.sqare{
+  width: 60px;
+  height: 60px;
+  background-color: rgb(255, 166, 0);
+  position: absolute;
 }
 </style>
