@@ -46,15 +46,18 @@
     
     for (var n = 0; n<10; n++){
       var rower = document.createElement("div")
-    rower.className = "rower"  
-    for (var u = 0; u<10; u++){
-    var pixeler = document.createElement("div")
-  pixeler.append("")
-    rower.append(pixeler)
-  }
-   document.body.append(rower)
-   }
+      rower.className = "rower"  
+      for (var u = 0; u<10; u++){
+        var pixeler = document.createElement("div")
+        pixeler.append("")
+        rower.append(pixeler)
+      }
+      document.body.append(rower)
     }
+    var save = document.createElement("button")
+    document.body.append(save)
+    save.append("save")
+  }
 
   document.documentElement.addEventListener("click",changeColor)
   window.onload = load
