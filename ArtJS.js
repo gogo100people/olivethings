@@ -60,8 +60,8 @@
 
       rower.className = "rower"  
       for (let u = 0; u<10; u++){
-        let rows = colors[n]
-        let color = rows ? rows[u] : undefined
+        let nthRow = colors[n]
+        let color = nthRow ? nthRow[u] : undefined
         let pixeler = document.createElement("div")
         if (color) {
           pixeler.style.backgroundColor = color
