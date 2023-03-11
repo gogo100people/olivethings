@@ -5,6 +5,7 @@
       let newColor = pickColor(target.oldColor)
       target.style.backgroundColor = newColor
       target.oldColor = newColor
+      Save()
     }
   }
   // This Picks The Color of the pixel (desides by a list)
@@ -24,7 +25,6 @@
   }
 // Drops A Random Square
   function dropSqare(sqare) {
-    
     let top = parseInt(sqare.style.top)
     if(top>window.innerHeight) {
       sqare.remove()
@@ -78,6 +78,28 @@
       contaner.append(rower)
     }
   }
+  // For Saving Pixels
+  function Save() {
+    console.log("Saving")
+    let PixelData = []
+    let contaner = document.getElementById("c")
+    for(let i = 0; i < contaner.childNodes.length; i++) {
+      let row = contaner.childNodes[i]
+      PixelData.push([])
+      for (let j = 0; j < row.childNodes.length; j++) {
+        let cell = row.childNodes[j]
+        let color = cell.style.backgroundColor
+        PixelData[i].push(color || '')
+      }
+    }
+    window.localStorage.pixelers = JSON.stringify(PixelData)
+  }
+  // Clears The Grid
+  function clearFunc() {
+    window.localStorage.pixelers = '';
+    console.log("Clearing Grid")
+    drawGrid()
+  }
   // For The "Load" Button And Other Functions
   function load() {
     let sqare = document.createElement("div")
@@ -86,29 +108,11 @@
     document.body.append(sqare)
     dropSqare(sqare)
     drawGrid()
-    
-    let load = document.createElement("button")
-    load.onclick= function() {
-     drawGrid()
-    }
-    document.body.append(load)
-    load.append("load")
-      let save = document.createElement("button")
-     save.onclick= function() {
-      window.localStorage.pixelers = JSON.stringify([
-        [
-         "red",
-         "yellow",
-        ],
-        [
-         "red",
-         "blue",
-        ]
-      ]
-       )
-    }
-    document.body.append(save)
-    save.append("save")
+
+    let clear = document.createElement('button')
+    clear.textContent = 'Clear grid'
+    clear.onclick = clearFunc
+    document.body.append(clear)
   }
 
   document.documentElement.addEventListener("click",changeColor)
