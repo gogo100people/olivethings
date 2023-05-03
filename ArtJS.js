@@ -1,7 +1,7 @@
   // Changes Color Of The Pixel you clicked on
   function changeColor(e) {
     let target = e.target;
-    if (target.nodeName == "DIV" && target.className != "rower"){
+    if (target.className == "PixelCell" && target.className != "rower"){
       let newColor = pickColor(target.oldColor)
       target.style.backgroundColor = newColor
       target.oldColor = newColor
@@ -63,6 +63,7 @@
         let nthRow = colors[n]
         let color = nthRow ? nthRow[u] : undefined
         let pixeler = document.createElement("div")
+        pixeler.className = "PixelCell"
         if (color) {
           pixeler.style.backgroundColor = color
         }
@@ -106,6 +107,7 @@
     sqare.style.top = "0px"
     sqare.style.left = window.innerWidth/2 + "px"
     document.body.append(sqare)
+    
     dropSqare(sqare)
     drawGrid()
 
