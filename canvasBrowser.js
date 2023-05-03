@@ -1,8 +1,13 @@
+function GetCanvases() {
+    let ReturnVal = JSON.parse(localStorage.canvases || "[]")
+    return ReturnVal
+}
 function createArtCanvas() {
     let blankGrid = createPixelGridForNewCanvas()
-    let canvases = JSON.parse(localStorage.canvases || "[]")
+    let canvases = GetCanvases()
     canvases.push(blankGrid)
     localStorage.canvases = JSON.stringify(canvases)
+    ReadAndShowCanvases()
 }
 function createPixelGridForNewCanvas() {
     let rows = [
@@ -22,5 +27,22 @@ function onLoad() {
     createButton.textContent = "Create"
     document.body.append(createButton)
     createButton.onclick = createArtCanvas
+    ReadAndShowCanvases()
+}
+function ReadAndShowCanvases() {
+    let contaner = document.getElementById("CanvasContaner")
+    if (!contaner) {
+        contaner = document.createElement("div")
+    }
+    contaner.id = "CanvasContaner"
+    contaner.textContent = ""
+    document.body.append(contaner)
+    let canvases = GetCanvases()
+    for (i = 0; i<canvases.length; i++) {
+        let CanvasName = "Untitled" + i
+        let CanvasShow = document.createElement("div")
+        CanvasShow.textContent = CanvasName
+        contaner.append(CanvasShow)
+    }
 }
 window.onload = onLoad

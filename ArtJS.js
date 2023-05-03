@@ -104,9 +104,13 @@
   // For The "Load" Button And Other Functions
   function load() {
     let sqare = document.createElement("div")
+    let ArtFileBrowserButton = document.createElement("button")
     sqare.style.top = "0px"
     sqare.style.left = window.innerWidth/2 + "px"
     document.body.append(sqare)
+    document.body.append(ArtFileBrowserButton)
+    ArtFileBrowserButton.textContent = "Menu"
+    ArtFileBrowserButton.onclick = goToFileBrowser
     
     dropSqare(sqare)
     drawGrid()
@@ -116,6 +120,10 @@
     clear.onclick = clearFunc
     document.body.append(clear)
   }
+
+function goToFileBrowser() {
+  window.location.replace("gogo100people.github.io/olivethings/canvasBrowser.html")
+}
 
   document.documentElement.addEventListener("click",changeColor)
   window.onload = load
