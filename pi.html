@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let d = 1
+            let sum = 0
+            let i = 0
+            setInterval(function() {
+                if(i % 2 == 0) {
+                    sum += 4 / d
+                } else {
+                    sum -= 4 / d
+                }
+                d += 2
+                i++
+                console.log(sum)
+            }, 50)
+        </script>
+    </head>
+</html>
