@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            .console {
+                white-space: pre-wrap;
+                overflow: auto;
+                height: 500px;
+                border: 1px solid black;
+            }
+        </style>
         <script>
             let d = 1
             let sum = 0
@@ -13,8 +21,15 @@
                 }
                 d += 2
                 i++
-                console.log(sum)
-            }, 50)
+                const console = document.getElementById("console")
+                console.append(sum + "\n")
+                if(console.scrollTop + console.clientHeight > console.scrollHeight - 100){
+                    console.scrollTop = console.scrollHeight
+                }
+            }, 100)
         </script>
     </head>
+    <body>
+        <div id="console" class="console"></div>
+    </body>
 </html>
