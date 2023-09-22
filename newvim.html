@@ -10,6 +10,13 @@
                 overflow: hidden;
             }
 
+            #first, #last {
+                width: 0px;
+                height: 0px;
+                margin: 0px;
+                border: 0px;
+            }
+
             html {
                 display: flex;
                 flex-direction: column;
@@ -39,6 +46,8 @@
     gtag('config', 'G-0KL1NRGWBG');
     </script>
     <body>
+        <input id="first">
         <div id="editor" autocomplete="off" spellcheck="false" contenteditable="true"></div>
+        <input id="last">
     </body>
 </html>

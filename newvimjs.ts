@@ -17,7 +17,7 @@ function load() {
         "red"
     ];
 
-    function onKeyPress(_e: KeyboardEvent) {
+    function keyUp(_e: KeyboardEvent) {
         document.getElementById("wrapper")?.remove()
 
         let text = editor.textContent;
@@ -43,7 +43,35 @@ function load() {
         }
     }
 
-    editor.addEventListener("keyup", onKeyPress);
+    function onFocus(_e: FocusEvent) {
+        editor.focus();
+        window.getSelection()?.setBaseAndExtent(anchornode, anchoroffset, focusnode, focusoffset);
+    }
+
+    let anchornode: Node;
+    let anchoroffset: number;
+    let focusnode: Node;
+    let focusoffset: number;
+
+    editor.addEventListener("keyup", keyUp);
+    document.getElementById("last")?.addEventListener("focus", onFocus);
+    document.getElementById("first")?.addEventListener("focus", onFocus);
+    document.addEventListener("selectionchange", (_e: Event) => {
+        let selection = window.getSelection()
+        if(!selection) {
+            return;
+        }
+        if(!selection.anchorNode) {
+            return;
+        }
+        if(!selection.focusNode) {
+            return;
+        }
+        anchornode = selection.anchorNode
+        anchoroffset = selection.anchorOffset
+        focusnode = selection.focusNode
+        focusoffset = selection.focusOffset
+    });
 }
 
 window.onload = load;
