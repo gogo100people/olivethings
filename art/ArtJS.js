@@ -122,7 +122,7 @@
   }
 
 function goToFileBrowser() {
-  window.location.replace("gogo100people.github.io/olivethings/canvasBrowser.html")
+  window.location.replace("canvasBrowser.html")
 }
 
   document.documentElement.addEventListener("click",changeColor)
