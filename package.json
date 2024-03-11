@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^9.23.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   }
 }
