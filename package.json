@@ -1,16 +1,15 @@
 {
   "name": "olivethings",
-  "version": "0.1.0",
-  "description": "we are making a project with LOTS of games. it also has art!",
-  "main": "ArtJS.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "gogo100people",
-  "license": "ISC",
-  "dependencies": {
-    "typescript": "^5.3.2",
-    "firebase": "^10.11.0"
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4"
   }
 }
