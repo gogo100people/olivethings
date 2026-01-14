@@ -10,7 +10,7 @@
   "author": "gogo100people",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^10.11.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2",
+    "firebase": "^10.11.0"
   }
 }
