@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZoomMe</title>
+        <script>
+            window.onload = () => {
+                const searchParams = URLSearchParams(window.location.search);
+                if(searchParams.get('name')) {
+                    document.getElementById('name').textContent = "Hi, I'm " + searchParams.get("name")
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="name"></h1>
+    </body>
+</html>
